@@ -1,26 +1,142 @@
-# Lumen PHP Framework
+# UAP TIS: REST API Sistem Akademik (Tema Expert)
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/lumen-framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/lumen-framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/lumen)](https://packagist.org/packages/laravel/lumen-framework)
+Berikut ini adalah proyek Ujian Akhir Praktikum untuk mata kuliah Teknologi Integrasi Sistem. Proyek ini mengimplementasikan sebuah REST API fungsional untuk sistem akademik sederhana menggunakan Lumen Framework, dengan fokus pada pengelolaan data Mahasiswa, Prodi, dan Mata Kuliah, serta relasi kompleks di antaranya.
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+## 👥 Anggota Kelompok
 
-> **Note:** In the years since releasing Lumen, PHP has made a variety of wonderful performance improvements. For this reason, along with the availability of [Laravel Octane](https://laravel.com/docs/octane), we no longer recommend that you begin new projects with Lumen. Instead, we recommend always beginning new projects with [Laravel](https://laravel.com).
+| No. | Nama | Peran Utama |
+| --- | --- | --- |
+| 1. | Poni | API Integrator |
+| 2. | Amel | Spesialis User & Autentikasi |
+| 3. | Nawa | Manajer Konfigurasi & Middleware |
+| 4. | Adin | Developer Modul Prodi |
+| 5. | Zara | Developer Modul Mata Kuliah |
+| 6. | Pio | Arsitek Relasi & Database |
 
-## Official Documentation
+## ⚙️ Teknologi yang Digunakan
+* Lumen Framework 
+* MySQL
+* Tymon JWT-Auth untuk autentikasi berbasis token
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
 
-## Contributing
+## 🛠️ Kontribusi & Pembagian Tugas
+Berikut adalah rincian kontribusi file kode oleh setiap anggota tim:
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+* **Poni (API Integrator)**
+    * `app/Http/Controllers/ApiController.php`: Mengimplementasikan seluruh logika bisnis untuk fitur-fitur setelah login.
+    * `routes/web.php`: Mendaftarkan semua *endpoint* API dan mengelompokkannya sesuai dengan proteksi *middleware*.
 
-## Security Vulnerabilities
+* **Amel (Spesialis User & Autentikasi)**
+    * `app/Models/Mahasiswa.php`: Membangun model User yang paling kompleks, lengkap dengan implementasi `JWTSubject`.
+    * `app/Http/Controllers/AuthController.php`: Menangani seluruh logika untuk proses registrasi dan login user.
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+* **Nawa (Manajer Konfigurasi & Middleware)**
+    * `bootstrap/app.php`: Mengonfigurasi dan mengaktifkan *service provider*, *facades*, dan *middleware*.
+    * `config/auth.php`: Mengatur konfigurasi *guard* dan *provider* untuk autentikasi JWT.
+    * `app/Http/Middleware/Authenticate.php`: Mengimplementasikan middleware untuk memproteksi *endpoint*.
 
-## License
+* **Adin (Developer Modul Prodi)**
+    * `app/Models/Prodi.php`: Membuat model untuk entitas Prodi beserta relasinya.
+    * `database/migrations/..._create_prodi_table.php`: Mendefinisikan struktur tabel `prodi`.
+    * `database/seeders/ProdiSeeder.php`: Menyediakan data awal untuk program studi.
 
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+* **Zara (Developer Modul Mata Kuliah)**
+    * `app/Models/Matakuliah.php`: Membuat model untuk entitas Mata Kuliah beserta relasinya.
+    * `database/migrations/..._create_matakuliah_table.php`: Mendefinisikan struktur tabel `matakuliah`.
+    * `database/seeders/MatakuliahSeeder.php`: Menyediakan data awal untuk mata kuliah.
+
+* **Pio (Arsitek Relasi & Database)**
+    * `database/migrations/..._create_mahasiswa_table.php`: Mendefinisikan struktur tabel `mahasiswa` dengan *foreign key*.
+    * `database/migrations/..._create_mahasiswa_matakuliah_table.php`: Mendefinisikan struktur tabel pivot untuk relasi *many-to-many*.
+    * `database/seeders/DatabaseSeeder.php`: Mengorkestrasi semua proses *seeding*.
+
+## 📊 Dokumentasi & Demo Endpoint (Postman)
+
+ERD 
+![ERD](assets/ERD.png)
+
+DATABASE
+![DATABASE](assets/DATABASE.png)
+
+Berikut adalah alur pengujian API dari awal hingga akhir.
+
+---
+### **BAGIAN 1: AUTENTIKASI (TANPA TOKEN)**
+---
+
+#### 1. Registrasi Mahasiswa Baru
+* **Deskripsi**: Endpoint ini digunakan untuk membuat user (mahasiswa) baru.
+* **Method**: `POST`
+* **URL**: `/api/register`
+* **Body**: `nim`, `nama`, `angkatan`, `password`, `prodi_id`
+
+![Registrasi](path/ke/assets/01-register.png)
+
+#### 2. Login & Mendapatkan Token JWT
+* **Deskripsi**: Setelah berhasil mendaftar, user dapat login untuk mendapatkan token autentikasi. Token ini wajib digunakan untuk mengakses endpoint yang diproteksi.
+* **Method**: `POST`
+* **URL**: `/api/login`
+* **Body**: `nim`, `password`
+
+![Login](path/ke/assets/02-login.png)
+
+---
+### **BAGIAN 2: FITUR UTAMA (MEMERLUKAN TOKEN)**
+---
+
+#### 3. Lihat Semua Mahasiswa
+* **Deskripsi**: Menampilkan daftar seluruh mahasiswa yang terdaftar beserta data prodinya.
+* **Method**: `GET`
+* **URL**: `/api/mahasiswa`
+
+![Get Semua Mahasiswa](assets/03-get-mahasiswa.png)
+
+Jika tidak menginputkan token atau token salah (berlaku juga pada semua request berikutnya)
+![Failed](assets/failed.png)
+
+#### 4. Lihat Semua Prodi
+* **Deskripsi**: Menampilkan daftar seluruh program studi yang tersedia dari database.
+* **Method**: `GET`
+* **URL**: `/api/prodi`
+
+![Get Semua Prodi](/assets/04-get-prodi.png)
+
+#### 5. Filter Mahasiswa Berdasarkan Prodi
+* **Deskripsi**: Menampilkan daftar mahasiswa yang hanya berasal dari prodi tertentu.
+* **Method**: `GET`
+* **URL**: `/api/mahasiswa/prodi/{id}` (Contoh: `/api/mahasiswa/prodi/1`)
+
+![Filter Mahasiswa](assets/05-filter-mahasiswa.png)
+
+#### 6. Lihat Semua Daftar Mata Kuliah
+* **Deskripsi**: Menampilkan seluruh mata kuliah yang tersedia di universitas (dari seeder).
+* **Method**: `GET`
+* **URL**: `/api/matkul`
+
+![Get Semua Matkul](assets/06-get-matkul.png)
+
+#### 7. Menambahkan Mata Kuliah ke Mahasiswa (KRS)
+* **Deskripsi**: Mahasiswa yang login dapat "mengambil" atau mendaftarkan mata kuliah ke dalam rencanan studinya.
+* **Method**: `POST`
+* **URL**: `/api/matkul/tambah`
+* **Body**: `mkId` (ID dari mata kuliah yang ingin diambil, contohnya (1))
+
+![Tambah Matkul](assets/07-tambah-matkul.png)
+
+Jika mencoba menambahkan mata kuliah yang telah diambil
+![Tambah Matkul Failed](assets/tambah-matkul-failed.png)
+
+#### 8. Lihat Daftar Mata Kuliah Milik Mahasiswa
+* **Deskripsi**: Menampilkan detail mata kuliah spesifik yang telah diambil oleh mahasiswa yang sedang login.
+* **Method**: `GET`
+* **URL**: `/api/matkul/{id}` (Contoh: `/api/matkul/1`)
+
+![Get Matkul Milik Sendiri](assets/08-get-matkul-by-id.png)
+
+Apabila mencari id matkul yang tidak ditambah sebelumnya
+![Get Matkul Failed](assets/get-matkul-by-id-failed.png)
+
+## 🎥 Video Presentasi
+Untuk penjelasan yang lebih detail dan demonstrasi langsung, berikut saya lampirkan video presentasi kami melalui tautan berikut:
+
+**[Video Presentasi](https://drive.google.com/drive/folders/1AFExNi6jHWsZeu-HGSGa3gtHtMa7xb-N?usp=sharing)**
