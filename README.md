@@ -74,7 +74,7 @@ Berikut adalah alur pengujian API dari awal hingga akhir.
 * **URL**: `/api/register`
 * **Body**: `nim`, `nama`, `angkatan`, `password`, `prodi_id`
 
-![Registrasi](path/ke/assets/01-register.png)
+![Registrasi](assets/01-register.png)
 
 #### 2. Login & Mendapatkan Token JWT
 * **Deskripsi**: Setelah berhasil mendaftar, user dapat login untuk mendapatkan token autentikasi. Token ini wajib digunakan untuk mengakses endpoint yang diproteksi.
@@ -82,7 +82,7 @@ Berikut adalah alur pengujian API dari awal hingga akhir.
 * **URL**: `/api/login`
 * **Body**: `nim`, `password`
 
-![Login](path/ke/assets/02-login.png)
+![Login](passets/02-login.png)
 
 ---
 ### **BAGIAN 2: FITUR UTAMA (MEMERLUKAN TOKEN)**
