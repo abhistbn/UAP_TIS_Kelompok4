@@ -52,10 +52,16 @@ class ApiController extends Controller
         return response()->json(['message' => 'Mata kuliah berhasil ditambahkan'], 201);
     }
 
-    public function getMatakuliahMahasiswa()
+    public function getMatakuliahMahasiswa($id)
     {
         $mahasiswa = Auth::user();
-        $matakuliah = $mahasiswa->matakuliahs()->get();
-        return response()->json(['matakuliah_diambil' => $matakuliah], 200);
+
+        $matakuliah = $mahasiswa->matakuliahs()->find($id);
+
+        if (!$matakuliah) {
+            return response()->json(['message' => 'Mata kuliah tidak ditemukan atau belum diambil oleh mahasiswa ini.'], 404);
+        }
+
+        return response()->json(['matakuliah' => $matakuliah], 200);
     }
 }
