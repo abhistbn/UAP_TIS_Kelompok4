@@ -10,12 +10,9 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('mahasiswa', function (Blueprint $table) {
-            $table->string('nim')->primary(); // nim (PK, string)
+        Schema::create('prodi', function (Blueprint $table) {
+            $table->id(); // id (PK, int)
             $table->string('nama'); // nama (string)
-            $table->integer('angkatan'); // angkatan (int)
-            $table->string('password'); // password (string)
-            $table->foreignId('prodi_id')->constrained('prodi'); // foreign key ke tabel prodis
             $table->timestamps();
         });
     }
@@ -25,6 +22,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('mahasiswa');
+        Schema::dropIfExists('prodi');
     }
 };
