@@ -91,8 +91,8 @@ Berikut adalah alur pengujian API dari awal hingga akhir.
 
 ![Get Semua Mahasiswa](assets/03-get-mahasiswa.png)
 
-Jika tidak menginputkan token atau token salah (berlaku juga pada semua request berikutnya)
-![Failed](assets/failed.png)
+Jika tidak menginputkan token atau token salah
+![Failed](assets/get-mahasiswa-failed-token.png)
 
 #### 4. Lihat Semua Prodi
 * **Deskripsi**: Menampilkan daftar seluruh program studi yang tersedia dari database.
@@ -101,6 +101,9 @@ Jika tidak menginputkan token atau token salah (berlaku juga pada semua request 
 
 ![Get Semua Prodi](/assets/04-get-prodi.png)
 
+Jika tidak menginputkan token atau token salah
+![Failed](assets/get-prodi-failed-token.png)
+
 #### 5. Filter Mahasiswa Berdasarkan Prodi
 * **Deskripsi**: Menampilkan daftar mahasiswa yang hanya berasal dari prodi tertentu.
 * **Method**: `GET`
@@ -108,12 +111,18 @@ Jika tidak menginputkan token atau token salah (berlaku juga pada semua request 
 
 ![Filter Mahasiswa](assets/05-filter-mahasiswa.png)
 
+Jika tidak menginputkan token atau token salah
+![Failed](assets/filter-mahasiswa-failed-token.png)
+
 #### 6. Lihat Semua Daftar Mata Kuliah
 * **Deskripsi**: Menampilkan seluruh mata kuliah yang tersedia di universitas (dari seeder).
 * **Method**: `GET`
 * **URL**: `/api/matkul`
 
 ![Get Semua Matkul](assets/06-get-matkul.png)
+
+Jika tidak menginputkan token atau token salah
+![Failed](assets/get-matkul-failed-token.png)
 
 #### 7. Menambahkan Mata Kuliah ke Mahasiswa (KRS)
 * **Deskripsi**: Mahasiswa yang login dapat "mengambil" atau mendaftarkan mata kuliah ke dalam rencanan studinya.
@@ -126,6 +135,9 @@ Jika tidak menginputkan token atau token salah (berlaku juga pada semua request 
 Jika mencoba menambahkan mata kuliah yang telah diambil
 ![Tambah Matkul Failed](assets/tambah-matkul-failed.png)
 
+Jika tidak menginputkan token atau token salah
+![Failed](assets/tambah-matkul-failed-token.png)
+
 #### 8. Lihat Daftar Mata Kuliah Milik Mahasiswa
 * **Deskripsi**: Menampilkan detail mata kuliah spesifik yang telah diambil oleh mahasiswa yang sedang login.
 * **Method**: `GET`
@@ -135,6 +147,9 @@ Jika mencoba menambahkan mata kuliah yang telah diambil
 
 Apabila mencari id matkul yang tidak ditambah sebelumnya
 ![Get Matkul Failed](assets/get-matkul-by-id-failed.png)
+
+Jika tidak menginputkan token atau token salah
+![Failed](assets/get-matkul-by-id-failed-token.png)
 
 ## 🎥 Video Presentasi
 Untuk penjelasan yang lebih detail dan demonstrasi langsung, berikut saya lampirkan video presentasi kami melalui tautan berikut:
