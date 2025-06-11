@@ -31,7 +31,7 @@ Berikut adalah rincian kontribusi file kode oleh setiap anggota tim:
     * `app/Http/Controllers/AuthController.php`: Menangani seluruh logika untuk proses registrasi dan login user.
     * Pembuatan `README.md`
 
-* **Nawa (Manajer Konfigurasi & Middleware)**
+* **Abhista (Manajer Konfigurasi & Middleware)**
     * `bootstrap/app.php`: Mengonfigurasi dan mengaktifkan *service provider*, *facades*, dan *middleware*.
     * `config/auth.php`: Mengatur konfigurasi *guard* dan *provider* untuk autentikasi JWT.
     * `app/Http/Middleware/Authenticate.php`: Mengimplementasikan middleware untuk memproteksi *endpoint*.
