@@ -4,14 +4,14 @@ Berikut ini adalah proyek Ujian Akhir Praktikum untuk mata kuliah Teknologi Inte
 
 ## 👥 Anggota Kelompok
 
-| No. | Nama | Peran Utama |
+| No. | Nama | NIM |
 | --- | --- | --- |
-| 1. | Poni | API Integrator |
-| 2. | Amel | Spesialis User & Autentikasi |
-| 3. | Nawa | Manajer Konfigurasi & Middleware |
-| 4. | Adin | Developer Modul Prodi |
-| 5. | Zara | Developer Modul Mata Kuliah |
-| 6. | Pio | Arsitek Relasi & Database |
+| 1. | Vonny Lorenza A. | [235150707111051] |
+| 2. | Amelinda Devota | [235150701111043] |
+| 3. | Abhista Tabina W | [235150701111044] |
+| 4. | Adinda Febyola | [235150707111055] |
+| 5. | Atha Azzahra K.N | [235150701111048] |
+| 6. | Fiony Safa A | [235150701111053] |
 
 ## ⚙️ Teknologi yang Digunakan
 * Lumen Framework 
@@ -22,13 +22,14 @@ Berikut ini adalah proyek Ujian Akhir Praktikum untuk mata kuliah Teknologi Inte
 ## 🛠️ Kontribusi & Pembagian Tugas
 Berikut adalah rincian kontribusi file kode oleh setiap anggota tim:
 
-* **Poni (API Integrator)**
+* **Vonny (API Integrator)**
     * `app/Http/Controllers/ApiController.php`: Mengimplementasikan seluruh logika bisnis untuk fitur-fitur setelah login.
     * `routes/web.php`: Mendaftarkan semua *endpoint* API dan mengelompokkannya sesuai dengan proteksi *middleware*.
 
-* **Amel (Spesialis User & Autentikasi)**
-    * `app/Models/Mahasiswa.php`: Membangun model User yang paling kompleks, lengkap dengan implementasi `JWTSubject`.
+* **Amel (Ketua Kelompok, Spesialis User & Autentikasi)**
+    * `app/Models/Mahasiswa.php`: Membangun model User kompleks, lengkap dengan implementasi `JWTSubject`.
     * `app/Http/Controllers/AuthController.php`: Menangani seluruh logika untuk proses registrasi dan login user.
+    * Pembuatan `README.md`
 
 * **Nawa (Manajer Konfigurasi & Middleware)**
     * `bootstrap/app.php`: Mengonfigurasi dan mengaktifkan *service provider*, *facades*, dan *middleware*.
@@ -39,16 +40,19 @@ Berikut adalah rincian kontribusi file kode oleh setiap anggota tim:
     * `app/Models/Prodi.php`: Membuat model untuk entitas Prodi beserta relasinya.
     * `database/migrations/..._create_prodi_table.php`: Mendefinisikan struktur tabel `prodi`.
     * `database/seeders/ProdiSeeder.php`: Menyediakan data awal untuk program studi.
+    * `ERD`
 
 * **Zara (Developer Modul Mata Kuliah)**
     * `app/Models/Matakuliah.php`: Membuat model untuk entitas Mata Kuliah beserta relasinya.
     * `database/migrations/..._create_matakuliah_table.php`: Mendefinisikan struktur tabel `matakuliah`.
     * `database/seeders/MatakuliahSeeder.php`: Menyediakan data awal untuk mata kuliah.
+    * `ERD`
 
-* **Pio (Arsitek Relasi & Database)**
+* **Fiony (Arsitek Relasi & Database)**
     * `database/migrations/..._create_mahasiswa_table.php`: Mendefinisikan struktur tabel `mahasiswa` dengan *foreign key*.
     * `database/migrations/..._create_mahasiswa_matakuliah_table.php`: Mendefinisikan struktur tabel pivot untuk relasi *many-to-many*.
     * `database/seeders/DatabaseSeeder.php`: Mengorkestrasi semua proses *seeding*.
+    * `ERD`
 
 ## 📊 Dokumentasi & Demo Endpoint (Postman)
 
