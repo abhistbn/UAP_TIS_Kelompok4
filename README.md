@@ -156,6 +156,6 @@ Jika tidak menginputkan token atau token salah
 ![Failed](assets/get-matkul-by-id-failed-token.png)
 
 ## 🎥 Video Presentasi
-Untuk penjelasan yang lebih detail dan demonstrasi langsung, berikut saya lampirkan video presentasi kami melalui tautan berikut:
+Untuk penjelasan yang lebih detail dan demonstrasi langsung, berikut kami lampirkan video presentasi melalui tautan berikut:
 
 **[Video Presentasi](https://drive.google.com/drive/folders/1AFExNi6jHWsZeu-HGSGa3gtHtMa7xb-N?usp=sharing)**
